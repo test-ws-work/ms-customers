@@ -1,6 +1,7 @@
 package br.com.wswork.module.customers.entities;
 
 import br.com.wswork.module.customers.constants.CustomerTypeEnum;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.persistence.*;
 
@@ -28,7 +29,7 @@ public class Customer {
     private String password;
 
     @Column
-    private CustomerTypeEnum customerType;
+    private String customerType;
 
     public Long getId() {
         return id;
@@ -74,15 +75,15 @@ public class Customer {
         return password;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setPassword(String password, PasswordEncoder passwordEncoder) {
+        this.password = passwordEncoder.encode(password);
     }
 
-    public CustomerTypeEnum getCustomerType() {
+    public String getCustomerType() {
         return customerType;
     }
 
-    public void setCustomerType(CustomerTypeEnum customerType) {
+    public void setCustomerType(String customerType) {
         this.customerType = customerType;
     }
 }
