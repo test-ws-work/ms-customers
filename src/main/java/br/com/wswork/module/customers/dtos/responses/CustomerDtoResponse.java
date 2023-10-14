@@ -21,10 +21,7 @@ public class CustomerDtoResponse {
     private String email;
 
     @JsonProperty
-    private String password;
-
-    @JsonProperty
-    private CustomerTypeEnum customerType;
+    private String customerType;
 
     public Long getId() {
         return id;
@@ -66,19 +63,11 @@ public class CustomerDtoResponse {
         this.email = email;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public CustomerTypeEnum getCustomerType() {
+    public String getCustomerType() {
         return customerType;
     }
 
-    public void setCustomerType(CustomerTypeEnum customerType) {
+    public void setCustomerType(String customerType) {
         this.customerType = customerType;
     }
 }

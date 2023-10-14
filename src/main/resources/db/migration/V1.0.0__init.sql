@@ -5,7 +5,7 @@ CREATE TABLE customers (
      age INT NOT NULL,
      email VARCHAR(50) NOT NULL,
      password VARCHAR(255) NOT NULL,
-     costumer_type VARCHAR(60)
+     customer_type VARCHAR(60)
 );
 
 CREATE TABLE customers_store (
