@@ -11,7 +11,7 @@ CREATE TABLE customers (
 CREATE TABLE customers_store (
     id SERIAL PRIMARY KEY NOT NULL,
     store_id INT NOT NULL,
-    costumer_id INT NOT NULL,
+    customer_id INT NOT NULL,
 
-    FOREIGN KEY (costumer_id) REFERENCES customers(id)
+    FOREIGN KEY (customer_id) REFERENCES customers(id)
 );
