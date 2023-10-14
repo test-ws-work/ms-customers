@@ -1,9 +1,9 @@
 package br.com.wswork.module.customers.entities;
 
-import br.com.wswork.module.customers.constants.CustomerTypeEnum;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "customers")
@@ -30,6 +30,9 @@ public class Customer {
 
     @Column
     private String customerType;
+
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
+    private List<CustomerStore> customerStores;
 
     public Long getId() {
         return id;
@@ -85,5 +88,13 @@ public class Customer {
 
     public void setCustomerType(String customerType) {
         this.customerType = customerType;
+    }
+
+    public List<CustomerStore> getCustomerStores() {
+        return customerStores;
+    }
+
+    public void setCustomerStores(List<CustomerStore> customerStores) {
+        this.customerStores = customerStores;
     }
 }

@@ -19,28 +19,22 @@ public class CustomerController {
         this.customerService = customerService;
     }
 
-    @ApiOperation("Create a new logist")
-    @PostMapping("/create-logist")
-    public ResponseEntity<CustomerDtoResponse> createLogist(
-            @RequestBody(required = true) final CustomerDtoRequest dto) {
-
-        return customerService.createLogist(dto);
-    }
-
     @ApiOperation("Create a new customer")
-    @PostMapping("/create-customer")
+    @PostMapping("{storeId}")
     public ResponseEntity<CustomerDtoResponse> createCustomer(
-            @RequestBody(required = true) final CustomerDtoRequest dto) {
+            @RequestBody(required = true) final CustomerDtoRequest dto,
+            @PathVariable(name = "storeId", required = true) final Long storeId) {
 
-        return customerService.createCustomer(dto);
+        return customerService.createCustomer(dto, storeId);
     }
 
     @ApiOperation("Search user by email and password")
     @PostMapping("")
     public ResponseEntity<CustomerDtoResponse> findByEmailAndPassword(
+            @RequestParam(name = "storeId", required = true) final Long storeId,
             @RequestBody(required = true) final LoginDtoRequest dto) {
 
-        return customerService.findByEmailAndPassword(dto);
+        return customerService.findByEmailAndPassword(storeId, dto);
     }
 
     @ApiOperation("Get customer profile")
