@@ -90,6 +90,7 @@ public class CustomerService {
 
     public ResponseEntity<CustomerDtoResponse> findCustomerById(final Long customerId) {
 
+
         LOGGER.info("Searching customer by id...");
         Customer customer = customerRepository.findById(customerId)
                 .orElseThrow(() -> new BusinessException(HttpStatus.NOT_FOUND.value(), HttpStatus.NOT_FOUND.getReasonPhrase(), "Customer not found."));
